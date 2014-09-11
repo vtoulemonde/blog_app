@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Val Blog</title>
+        <link rel="stylesheet" type="text/css" href="/public/style.css">
+    </head>
+    <body>
+        <div class='banner'>Valentine's Blog App</div>
+        <div class='container'>
+            
+            <p class='welcome'>Update an existing post</p>
+            <form action="update" method="POST" style="display:inline;">
+                <input type='hidden' name="index" value="<%=index%>" >
+                <input type="text" name="title" style="display:block;" placeholder="Title" value="<%=post.title%>">
+                <textarea cols="40" rows="20" name="content" style="display:block;" placeholder="Post"><%=post.content%></textarea>
+                <input type="text" name="author" style="display:block;" placeholder="Author" value="<%=post.author%>">
+                <input type="submit" value="Submit" style="display:inline;">
+            </form>
+            <a href="/">Cancel</a>
+
+        </div>
+    </body>
+</html>

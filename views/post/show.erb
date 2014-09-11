@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Val Blog</title>
+        <link rel="stylesheet" type="text/css" href="/public/style.css">
+    </head>
+    <body>
+        <div class='banner'>Valentine's Blog App</div>
+        <div class='container'>    
+            <p class='welcome'>Focus on a post</p>
+            <div class='post'>
+                <h2><%=post.title%></h2>
+                <p class='post-meta'><%=post.pretty_date%> by <%=post.author%></p>
+                <p><%=post.content%>...</p>
+                <a href="edit?index=<%=index%>">Edit</a>
+                <a href="destroy?index=<%=index%>">Delete</a>
+                <% if !post.comments.empty? %>
+                    <div class='comment'>
+                        <h3>Comments</h3>
+                        <% post.comments.each do |comment| %>
+                            <p>-<%=comment.author%> : <%=comment.content%></p>
+                        <% end %>
+                    </div>
+                <% end %>
+
+                <a href="comment/new?index=<%=index%>">Add comment</a>
+                <hr>
+            </div>
+            <a href="/">Back</a>
+        </div>
+    </body>
+</html>
+

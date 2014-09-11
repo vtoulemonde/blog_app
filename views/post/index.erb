@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Val Blog</title>
+        <link rel="stylesheet" type="text/css" href="/public/style.css">
+    </head>
+    <body>
+        <div class='banner'>Valentine's Blog App</div>
+        <div class='container'>
+            <h1>Welcome</h1>    
+            <p class='welcome'>You can add post if you want, or comment on another user post.<p>
+            <a href='/new'>Create a new post</a>
+
+            <div class='filter'>
+                <form action='/' method='GET' style = 'display:inline;'>
+                    Filter: 
+                    <input type='text' name='filter' value='<%=filter%>'>
+                    <input type='submit' value='Filter'>
+                </form>
+                <form action='/' method='GET' style = 'display:inline;'>
+                    <input type='submit' value='Cancel'>
+                </form>
+            </div>
+    
+            <% posts.each_with_index do |post, index| %>
+                <%if post.include? filter %>
+                    <div class='post'>
+                        <h2><%=post.title%></h2>
+                        <p class='post-meta'><%=post.pretty_date%> by <%=post.author%></p>
+                        <p><%=post.content[0,200]%>...</p>
+                        <a href="show?index=<%=index%>">Read more</a>
+                        <a href="edit?index=<%=index%>">Edit</a>
+                        <a href="destroy?index=<%=index%>">Delete</a>
+
+                        <% if !post.comments.empty? %>
+                            <div class='comment'>
+                                <h3>Comments</h3>
+                                <% post.comments.each do |comment| %>
+                                    <p>-<%=comment.author%> : <%=comment.content%></p>
+                                <% end %>
+                            </div>
+                        <% end %>
+                        <a href="comment/new?index=<%=index%>">Add comment</a>
+                    <hr>
+                    </div>
+                <%end%>
+            <%end%>
+
+        </div>
+    </body>
+</html>
