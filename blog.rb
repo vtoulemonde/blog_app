@@ -56,6 +56,16 @@ class BlogDb
         @db.results_as_hash = true
 	end
 
+	def initDbTest(name)
+		if File.exist? name
+            File.delete name
+        end
+		@db = SQLite3::Database.new name
+        @db.execute_batch File.read('../data/schema.sql')
+		@db.execute 'PRAGMA foreign_keys = true;'
+        @db.results_as_hash = true
+	end
+
 	def create_post(title, content, author)
 		comment_date = DateTime.now
 		@db.execute SQL_INSERT_POST, [title, content, author, comment_date.to_s]

@@ -71,7 +71,8 @@ h2 {
 }
 .comment{
     border-left: 5px solid #eee;
-    padding: 0px 20px 10px 20px;
+    padding: 0px 20px 0px 20px;
+    margin: 20px 0px 10px 0px;
     font-size: 14px;
 }
 h3 {
@@ -93,3 +94,18 @@ input[type=submit] {
     height: 25px;
     font-size: 16px;
 }
+
+/*label {
+    color: rgb(85, 85, 85);
+    color: red;
+    cursor: default;
+    display: block;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    height: 16px;
+    margin-bottom: 4.19999980926514px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    width: 836px;
+}*/

@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <title>Val Blog</title>
+        <link rel="stylesheet" type="text/css" href="/public/input.css">
         <link rel="stylesheet" type="text/css" href="/public/style.css">
     </head>
     <body>
@@ -13,8 +14,10 @@
 
             <div class='filter'>
                 <form action='/' method='GET' style = 'display:inline;'>
-                    Filter: 
-                    <input type='text' name='filter' value='<%=filter%>'>
+                    <div class="ui icon input">
+                        <input type="text" name='filter' placeholder="Search..." value='<%=filter%>'>
+                        <i class="search icon"></i>
+                    </div>
                     <input type='submit' value='Filter'>
                 </form>
                 <form action='/' method='GET' style = 'display:inline;'>
@@ -41,7 +44,8 @@
                             </div>
                         <% end %>
                         <a href="comment/new?index=<%=index%>">Add comment</a>
-                    <hr>
+
+                    <br><br><hr>
                     </div>
                 <%end%>
             <%end%>

@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <title>Val Blog</title>
+        <link rel="stylesheet" type="text/css" href="/public/form.css">
         <link rel="stylesheet" type="text/css" href="/public/style.css">
     </head>
     <body>
@@ -14,16 +15,30 @@
                 <p><%=post.content%>...</p>
                 <a href="edit?index=<%=index%>">Edit</a>
                 <a href="destroy?index=<%=index%>">Delete</a>
-                <% if !post.comments.empty? %>
-                    <div class='comment'>
+
+                <div class='comment'>
+                    <% if !post.comments.empty? %>
                         <h3>Comments</h3>
                         <% post.comments.each do |comment| %>
                             <p>-<%=comment.author%> : <%=comment.content%></p>
                         <% end %>
-                    </div>
-                <% end %>
+                    <% end %>
+                    <h3>Add a comment:</h3>
+                    <form action="comment/create_show" method="POST" style="display:inline;">           
+                        <div class="ui form">
+                            <div class="field">
+                                <input type='hidden' name='index' value='<%=index%>'>
+                                <label>Comment</label>
+                                <textarea name="comment"></textarea>
+                                <label>Author</label>
+                                <input type="text" name="author">
+                            </div>
 
-                <a href="comment/new?index=<%=index%>">Add comment</a>
+                        </div>
+                        <input type="submit" value="Submit" style="display:inline;">
+                    </form>
+                </div>
+               <br>
                 <hr>
             </div>
             <a href="/">Back</a>

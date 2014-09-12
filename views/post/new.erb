@@ -2,19 +2,29 @@
 <html lang="en">
     <head>
         <title>Val Blog</title>
+        <link rel="stylesheet" type="text/css" href="/public/form.css">
         <link rel="stylesheet" type="text/css" href="/public/style.css">
+
     </head>
     <body>
         <div class='banner'>Valentine's Blog App</div>
         <div class='container'>
             <p class='welcome'>Create a new post</p>
-            <form action="create" method="POST" style="display:inline;">
-                <input type="text" name="title" style="display:block;" placeholder="Title">
-                <textarea cols="40" rows="20" name="content" style="display:block;" placeholder="Post"></textarea>
-                <input type="text" name="author" style="display:block;" placeholder="Author">
+
+            <form action="create" method="POST" style="display:inline;">           
+                <div class="ui form">
+                    <div class="field">
+                        <label>Title</label>
+                        <input type="text" name="title">
+                        <label>Post</label>
+                        <textarea name="content"></textarea>
+                        <label>Author</label>
+                        <input type="text" name="author">
+                    </div>
+                </div>
                 <input type="submit" value="Submit" style="display:inline;">
+                <a href="/">Cancel</a>
             </form>
-            <a href="/">Cancel</a>
 
         </div>
     </body>

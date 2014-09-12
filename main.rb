@@ -54,6 +54,10 @@ class BlogApp
         when '/comment/create'
             add_comment(request)
             response.redirect '/index'
+
+        when '/comment/create_show'
+            idx = add_comment(request)
+            response.redirect "/show?index=#{idx}"
         end
         
         response.finish
@@ -69,13 +73,15 @@ class BlogApp
     end
 
     def add_comment(request)
-        post = @posts[request.POST['index'].to_i]
+        index = request.POST['index'].to_i
+        post = @posts[index]
 
         post.add_comment @blogDb.create_comment(
                                         post.id, 
                                         request.POST['comment'], 
                                         request.POST['author']
                                         )
+        index
     end
 
     def delete_post(request)
